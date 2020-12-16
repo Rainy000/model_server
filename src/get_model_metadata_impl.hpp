@@ -50,11 +50,8 @@ public:
 
     static Status getModelStatus(
         const tensorflow::serving::GetModelMetadataRequest* request,
-        tensorflow::serving::GetModelMetadataResponse* response);
-    static Status getModelStatus(
-        const tensorflow::serving::GetModelMetadataRequest* request,
         tensorflow::serving::GetModelMetadataResponse* response,
-        ModelManager& manager);
+        ModelManager& manager = ModelManager::getInstance());
     static Status createGrpcRequest(std::string model_name, std::optional<int64_t> model_version, tensorflow::serving::GetModelMetadataRequest* request);
     static Status serializeResponse2Json(const tensorflow::serving::GetModelMetadataResponse* response, std::string* output);
 };
